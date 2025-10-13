@@ -1,5 +1,6 @@
 import subprocess
 import time
+import pyttsx3
 def run_allo_script(filename):
     if not filename.endswith(".mech"):
         print("Error: not a .mech file.")
@@ -28,6 +29,11 @@ def run_allo_script(filename):
                 elif code.startswith("print "):
                     text = code[6:]  # 'print ' = 6 chars
                     print(text)
+                elif code.startswith("say "):
+                    text = code[6:]  # 'print ' = 6 chars
+                    engine = pyttsx3.init()
+                    engine.say(text)
+                    engine.runAndWait()
                 elif code.startswith("reboot"):
                     text = code[5:]
                     subprocess.run(["reboot", "now"])
@@ -35,14 +41,14 @@ def run_allo_script(filename):
                     text = code[7:]
                     print("'restart' is the Windows equivelant of the Mech 'reboot' command (Linux-only)")
                     time.sleep(2)
-                elif code.startswith("define "):
-                    text = code[7:]
-                    code.startswith(text)
-                    savedfunc = mmap.mmap(file_obj.fileno(), length=0, access=mmap.ACCESS_READ)
-                    text = savedfunc
                 elif code.startswith("if "):
-                    text = code[3:]
+                    parts = code[3:].split(":", 1)
+                    condition = parts[0].strip()
+                    commands = parts[1].strip() if len(parts) > 1 else ""
                     
+                    if condition == "true":  # minimal truth check
+                        run()
+
                 # --- USE COMMAND (import or read another file) ---
                 elif code.startswith("use "):
                     lib = code[4:]  # 'use ' = 4 chars
@@ -70,6 +76,9 @@ def run_allo_script(filename):
                 # --- UNKNOWN COMMAND ---
                 else:
                     print(f"Unknown command: {code}")
+def run(code_string):
+    for line in code_string.split(" and"):  # Use ' and' to separate multiple commands
+        run(line.strip())
 
     except FileNotFoundError:
         print(f"File not found: {filename}")
