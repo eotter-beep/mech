@@ -31,6 +31,15 @@ def run_allo_script(filename):
                 elif code.startswith("reboot"):
                     text = code[5:]
                     subprocess.run(["reboot", "now"])
+                elif code.startswith("restart"):
+                    text = code[7:]
+                    print("'restart' is the Windows equivelant of the Mech 'reboot' command (Linux-only)")
+                    time.sleep(2)
+                elif code.startswith("define "):
+                    text = code[7:]
+                    code.startswith(text)
+                    savedfunc = mmap.mmap(file_obj.fileno(), length=0, access=mmap.ACCESS_READ)
+                    text = savedfunc
                 elif code.startswith("if "):
                     text = code[3:]
                     
