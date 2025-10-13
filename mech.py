@@ -78,9 +78,9 @@ def run_allo_script(filename):
                 else:
                     print(f"Unknown command: {code}")
 def run(code_string):
-    for line in code_string.split(" and"):  # Use ' and' to separate multiple commands
-        run(line.strip())
-
+    try:
+        for line in code_string.split(" and"):  # Use ' and' to separate multiple commands
+            run(line.strip())
     except FileNotFoundError:
         print(f"File not found: {filename}")
 
