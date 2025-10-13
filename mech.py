@@ -82,3 +82,9 @@ def run(code_string):
 
     except FileNotFoundError:
         print(f"File not found: {filename}")
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Usage: python mech.py <file.mech>")
+    else:
+        run_allo_script(sys.argv[1])
