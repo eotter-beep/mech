@@ -1,6 +1,7 @@
 import subprocess
 import time
 import pyttsx3
+import sys
 def run_allo_script(filename):
     if not filename.endswith(".mech"):
         print("Error: not a .mech file.")
