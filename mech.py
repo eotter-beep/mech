@@ -132,6 +132,9 @@ def run_mech_file(filename):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
+        print("MECH")
+        print("MECHanical robots language")
+        print("------------------------------------------")
         print("Usage: python mech.py <file.mech>")
         print("Example: python mech.py example.mech")
     else:
