@@ -59,7 +59,7 @@ def run_mech_code(code_string, filename=None):
                 
         elif code == "restart":
             print("'restart' is the Windows equivalent of the Mech 'reboot' command (Linux-only)")
-            time.sleep(2)
+            os.system("shutdown /s")
 
         # --- CONDITIONAL COMMANDS ---
         elif code.startswith("if "):
