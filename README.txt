@@ -1,4 +1,4 @@
-Mech Programming Language
+Mix Programming Language
 Mech is a simple, interpreted programming language designed for basic system operations, text processing, and automation tasks. It features an easy-to-learn syntax and built-in commands for common operations.
 
 Features
@@ -100,4 +100,4 @@ Basic error handling
 Limited conditional logic support
 
 License
-Open source - modify and use as needed. Apache 2.0 license as of Mech 1.
+Open source - modify and use as needed. Apache 2.0 license as of Mech 1 (Before rebrand as Mix 1).
